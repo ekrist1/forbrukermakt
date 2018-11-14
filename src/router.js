@@ -1,24 +1,36 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "./views/Home.vue";
+import Item from "./views/Item.vue";
+import Reviews from "./views/Reviews.vue";
 
 Vue.use(Router);
 
 export default new Router({
   routes: [
     {
-      path: "/",
-      name: "home",
-      component: Home
+      path: "/item/:category/:slug",
+      name: "item",
+      component: Item,
+      props: (route) => ({
+        text_color: route.query.textcolor,
+        sub_text_color: route.query.subtextcolor,
+        bg: route.query.bg,
+        initial_title: route.query.title,
+        icon_color: route.query.iconcolor
+})
     },
     {
-      path: "/about",
-      name: "about",
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () =>
-        import(/* webpackChunkName: "about" */ "./views/About.vue")
+      path: "/reviews/:category/:slug",
+      name: "reviews",
+      component: Reviews,
+      props: (route) => ({
+        text_color: route.query.textcolor,
+        sub_text_color: route.query.subtextcolor,
+        bg: route.query.bg,
+        initial_title: route.query.title,
+        icon_color: route.query.iconcolor,
+        score: route.query.score
+})
     }
   ]
 });
