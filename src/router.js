@@ -2,6 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 import Item from "./views/Item.vue";
 import Reviews from "./views/Reviews.vue";
+import Contact from "./views/Contact.vue";
 
 Vue.use(Router);
 
@@ -31,6 +32,11 @@ export default new Router({
         icon_color: route.query.iconcolor,
         score: route.query.score
 })
+    },
+    {
+      path: "/contact",
+      name: "contact",
+      component: Contact
     }
   ]
 });
